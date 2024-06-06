@@ -1,19 +1,17 @@
 <template>
-
-   <div id="app">
-    <Navbar></Navbar>
-     <!-- <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
+  <div>
+    <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
       <b-navbar-brand href="#">Vue Recipes</b-navbar-brand>
-  
+
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-  
+
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item :to="{ name: 'main' }" tag="router-link">Home</b-nav-item>
           <b-nav-item :to="{ name: 'search' }" tag="router-link">Search</b-nav-item>
           <b-nav-item :to="{ name: 'about' }" tag="router-link">About</b-nav-item>
         </b-navbar-nav>
-  
+
         <b-navbar-nav class="ml-auto">
           <template v-if="!$root.store.username">
             <span class="navbar-text">
@@ -46,32 +44,28 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <router-view /> -->
+    <router-view />
   </div> 
 </template>
 
-<script>
-import Navbar from './components/Navbar'
+<script> 
+
 export default {
-  
-  name: "App",
-  methods: {
-    Logout() {
+    name: "Navbar",
+    methods: {
+      Logout() {
       this.$root.store.logout();
       this.$root.toast("Logout", "User logged out successfully", "success");
 
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
+     }
     }
-  },
-  components: {
-    Navbar
-  }
 };
-</script>
 
-<!-- <style lang="scss">
+</script>
+<style lang="scss">
 @import "@/scss/form-style.scss";
 
   #app {
@@ -103,8 +97,7 @@ export default {
   }
   #user_name_text{
     margin-top: 0.5rem;
-    margin-right: 3em;
+    margin-right: 1rem;
   }
 
-</style> -->
-
+</style>
