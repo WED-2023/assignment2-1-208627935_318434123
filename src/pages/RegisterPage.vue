@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="register_page_container">
+    <div class="register_grid_container">
     <h1 class="title">Register</h1>
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
       <b-form-group
@@ -89,15 +90,15 @@
           The confirmed password is not equal to the original password
         </b-form-invalid-feedback>
       </b-form-group>
-
-      <b-button type="reset" variant="danger">Reset</b-button>
-      <b-button
-        type="submit"
-        variant="primary"
-        style="width:250px;"
-        class="ml-5 w-75"
-        >Register</b-button
-      >
+      <div>
+        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button
+          type="submit"
+          variant="primary"
+          style="width:250px;"
+          class="ml-5 w-75"
+          >Register</b-button>
+      </div>
       <div class="mt-2">
         You have an account already?
         <router-link to="login"> Log in here</router-link>
@@ -117,6 +118,7 @@
       <pre class="m-0"><strong>$v.form:</strong> {{ $v.form }}</pre>
     </b-card> -->
   </div>
+</div>
 </template>
 
 <script>
@@ -234,7 +236,21 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container {
-  max-width: 500px;
+.register_page_container {
+
+  background-color: #232323;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    overflow: auto; 
+    height: 100vh;
+
+}
+.register_grid_container{
+  box-sizing: border-box;
+    width: 30%;
+    height: 40%;
 }
 </style>

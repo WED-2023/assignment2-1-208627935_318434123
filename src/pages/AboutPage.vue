@@ -1,99 +1,49 @@
 <template>
-  <!-- <div>
-      <h5>AboutPage</h5>
-  </div> -->
+
     <div>
      <div id="about_page" class="aboutClass" >
         <div class="aboutClass-inner">
         
-          <h1 class="headline">About Us Website</h1>
           <div class="aboutSec">
-    
+            <div id="text_div">
+            <h1 class="headline">About Our Website</h1>
             <p id="about_para">
-              On this website you can search for new or old recipes,<br>
-              you can register on the site and enjoy a culinary experience via the Internet. <br>
-              plus you can create your own new recipes, and add them to your favorites.<br><br>
-      
-              Hope You Enjoy!
+              
+              <br>
+              Welcome to Recipes, your go-to platform for discovering, creating, and sharing recipes. Our mission is to bring together food enthusiasts from all around the world to share their love for cooking.<br>
+              <br>
+              <u><b>We doing it by:</b></u><br>
+             
+              <ul class="list_object">
+                <li class="list-line">Save Your Favorite Recipes</li>
+                <li class="list-line">Find recipes you love and save them to your personal collection. Never lose track of your favorite dishes again.</li>
+                <li class="list-line">Create Your Own Recipes</li>
+              </ul>
+        
+
+
+              Have a recipe you want to share with the world? Create your own recipes and add them to our ever-growing database.<br>
+              <br>
+              Family Recipes<br>
+              <br>
+              Preserve your cherished family recipes. Add them to your personal collection and share them with your family members.<br>
+              <br>
+              Join Our Community<br>
+              Our community is made up of food lovers, professional chefs, and home cooks. Connect with others, share your culinary creations, and get inspired.<br>
+              <br>
+              Our Mission<br>
+              We believe that cooking is a universal language that brings people together. Our mission is to make cooking fun, easy, and accessible for everyone.<br>
               <br>
             </p>
   
             <div style="display: inline-block;">
               <div style="display: inline;">
-                <p style="color:crimson;">Link To Our First Game</p>
-              </div>
-              <div class="linkes" style="display: inline;">
-  
-                <!-- <a href="https://web-development-environments-2022.github.io/assignment2-315450569_316586908/">
-                  <img class="pacManIc" src="../images/pacMan-removebg-preview.png" >
-                </a> -->
+                <a id="last-project-link" href="https://wed-2023.github.io/208627935/">Link To Our Micheal jorden site</a>
               </div>
             </div>
-  
           </div>
-          <h1 id="contact" class="headline" style="text-align:center">Contact Our Team</h1>
-  
-          <!-- <div class="div0">
-            <div class="div1Tal">
-              <div class="div2Tal">
-                <img id="tal" src="../images/tal.jpeg" alt="tal" >
-                <div class="div3">
-
-                <h2>Tal Ben Hamou</h2>
-                <p class="id">315450569</p>
-                <p>Tal 27 years old, a third year student.</p>
-                <p>benhatal@post.bgu.ac.il</p>
-                <div style="text-align: right; padding-right: 60px;color:lightseagreen">
-                  <label>My First Website</label>
-                </div>
-                <div class="socialLogo">
-                  <a href="	https://www.instagram.com/tal.ben.hamo/">
-                  <img class="socialMedia" src="../images/instaLogo.png" alt="Instagram">
-                  </a>
-                
-                  <a href="https://www.facebook.com/tal.benhamou.71">
-                  <img class="socialMedia" src="../images/facebookLogo.png" alt="Facebook">
-                  </a>
-                  <a href="https://web-development-environments-2022.github.io/315450569/">
-                    <img class="linkWeb" src="../images/43-512.webp" >
-                  </a>
-              
-                </div>
-
-                </div>
-              </div>
-            </div> -->
-          
-            <!-- <div class="div1">
-              <div class="div2">
-                <img id="ido" src="../images/ido.jpeg" alt="ido">
-                <div class="div3">
-
-                <h2>Ido Cohen</h2>
-                <p class="id">316586908</p>
-                <p>Ido 26 years old, a third year student.</p>
-                <p>ido3@post.bgu.ac.il</p>
-                <div style="text-align: right; padding-right: 60px;color:lightseagreen">
-                  <label>My First Website</label>
-                </div>
-                <div class="socialLogo">
-                  <a href="https://www.instagram.com/idocohen32/">
-                  <img class="socialMedia" src="../images/instaLogo.png" alt="Instagram">
-                  </a>
-                
-                  <a href="https://www.facebook.com/ido.cohen.560">
-                  <img class="socialMedia" src="../images/facebookLogo.png" alt="Facebook">
-                  </a>
-                  <a href="https://web-development-environments-2022.github.io/316586908/">
-                    <img class="linkWeb" src="../images/43-512.webp" >
-                  </a>
-                </div>
-
-                </div>
-              </div>
-            </div> -->
-          <!-- </div> -->
-              </div>
+          </div>
+        </div>
      </div>
     </div>
   </template>
@@ -157,9 +107,9 @@
   
   .aboutSec {
       padding: 55px;
-      text-align: center;
       background-color: #232323;
       color: white;
+
   }
   
   .div3 {
@@ -191,7 +141,8 @@
   }
   
   .headline{
-      color: rgb(255, 79, 79);
+      color: green;
+      text-align: center;
   }
   
   #about_page{
@@ -201,7 +152,6 @@
       max-width: 100%;
       max-height: 100%;
       overflow: auto; 
-      /* background-color: rgb(243, 243, 243);  */
       background-color: rgba(1, 22, 11, 0.4); 
     }
   
@@ -209,7 +159,6 @@
   
       position: relative;
       margin: auto;
-  
       width: 100%;
       max-width: 100%;
     }
@@ -219,6 +168,26 @@
       font-family:Arial, Helvetica, sans-serif;
       font: bold;
       font-size: larger;
+      text-align: left;
   
+  }
+  .list-line{
+    text-align: left;
+
+  }
+  .list_object{
+    text-align: center;
+  }
+  #last-project-link{
+    color: green;
+    cursor: pointer;
+    font-size: 25px;
+    margin-left: 23rem;
+  }
+  #text_div{
+    margin-right: 10em;
+    margin-left: 10em;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
   }
   </style>
