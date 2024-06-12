@@ -1,9 +1,12 @@
 <template>
   <div class="recipe-preview">
-    <div class="image-container" @click="navigateToRecipe" @mouseover="hover = true" @mouseleave="hover = false">
-      <img :src="recipe.image" :alt="recipe.title" class="recipe-image">
-      <div v-if="hover" class="hover-indicator">Click to view recipe</div>
-    </div>
+    <router-link :to="{ name: 'recipes', params: { recipeId: recipe.id } }">
+      <div class="image-container" @mouseover="hover = true" @mouseleave="hover = false">
+        <img :src="recipe.image" :alt="recipe.title" class="recipe-image">
+        <div v-if="hover" class="hover-indicator">Click to view recipe</div>
+    
+      </div>
+    </router-link>
     <h3>{{ recipe.title }}</h3>
     <p>Preparation Time: {{ recipe.readyInMinutes }} minutes</p>
     <p>Popularity: {{ recipe.aggregateLikes }} likes</p>
@@ -23,6 +26,8 @@
 </template>
 
 <script>
+  import RecipePreviewList from "../components/RecipePreviewList.vue";
+  import { mockGetRecipeFullDetails } from "../services/recipes.js";
 export default {
   props: {
     recipe: {
@@ -39,7 +44,7 @@ export default {
     navigateToRecipe() {
       // Logic to mark the recipe as viewed and navigate to the recipe page
       this.recipe.isViewed = true;
-      this.$emit('view-recipe', this.recipe.id);
+      all_data = this.mockGetRecipeFullDetails(this.recipe.id);
     },
     toggleFavorite() {
       // Logic to add the recipe to favorites

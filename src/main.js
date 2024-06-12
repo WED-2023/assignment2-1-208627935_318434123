@@ -24,6 +24,7 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  IconsPlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
