@@ -1,5 +1,4 @@
 <template>
-
     <div>
      <div id="about_page" class="aboutClass" >
         <div class="aboutClass-inner">
@@ -38,7 +37,7 @@
   
             <div style="display: inline-block;">
               <div style="display: inline;">
-                <a id="last-project-link" href="https://wed-2023.github.io/208627935/">Link To Our Micheal jorden site</a>
+                <a id="last-project-link" href="https://wed-2023.github.io/208627935/">Link To Our Michael jorden site</a>
               </div>
             </div>
           </div>
@@ -55,89 +54,11 @@
   </script>
   
   <style>
-  .pacManIc{
-    width: 100px;
-    height: 100px;
-  }
-  .pacManIc:hover{
-    zoom: 1.15;
-  }
-  .socialMedia{
-    width: 100px;
-    height: 100px;
-  }
-  .linkWeb{
-    width: 100px;
-    height: 100px;
-  }
-  .div0 {
-      background-color: #232323;
-      display: flex;
-    justify-content: center;
-  }
-  
-  .div1 {
-      float: left;
-    margin-right: 190px;
-      width: 48%;
-      margin-bottom: 16px;
-      padding: 11px;
-  }
-  
-  .div1Tal {
-      float: left;
-    margin-left: 400px;
-      width: 48%;
-      margin-bottom: 16px;
-      padding: 11px;
-  }
-  
-  
-  .div2 {
-    display: inline-block;
-      box-shadow: 0px 8px 10px 3px rgba(255, 255, 255, 0.2);
-      margin: 4px;
-  }
-  
-  .div2Tal {
-    display: inline-block;
-      box-shadow: 0px 8px 10px 3px rgba(255, 255, 255, 0.2);
-      margin: 4px;
-  }
-  
   .aboutSec {
       padding: 55px;
       background-color: #232323;
       color: white;
 
-  }
-  
-  .div3 {
-      padding: 0 10px;
-      color: aliceblue;
-      background-color: #232323;
-  }
-  
-  .div3::after, .row::after {
-      content: "";
-      clear: both;
-      display: table;
-  }
-  
-  .id {
-      color: rgb(114, 144, 176);
-  }
-  
-  #ido, #tal {
-      float: left;
-      width:  475px;
-      height: 500px;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: cover;
-      overflow: auto;
-      display: inline;
-      margin: 0 auto;
   }
   
   .headline{
@@ -146,7 +67,6 @@
   }
   
   #about_page{
-  
       width: 100%; 
       height: 100%; 
       max-width: 100%;
@@ -156,7 +76,6 @@
     }
   
   .aboutClass-inner {
-  
       position: relative;
       margin: auto;
       width: 100%;

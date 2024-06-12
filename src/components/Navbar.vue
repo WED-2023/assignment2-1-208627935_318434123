@@ -1,14 +1,22 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
-      <b-navbar-brand href="#">Vue Recipes</b-navbar-brand>
+    <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top" >
+      <b-navbar-brand href="#" class="mx-auto">
+        <img
+          src="@/assets/icon.png"
+  
+          class="d-inline-block align-top logo"
+        />
+        <p class="slogen">reSipe - Your reSult for every meal!</p>
+      </b-navbar-brand>
+
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item :to="{ name: 'main' }" tag="router-link">Home</b-nav-item>
-          <b-nav-item :to="{ name: 'search' }" tag="router-link">Search</b-nav-item>
+          <b-nav-item :to="{ name: 'SearchPage' }" tag="router-link">Search</b-nav-item>
           <b-nav-item :to="{ name: 'about' }" tag="router-link">About</b-nav-item>
         </b-navbar-nav>
 
@@ -30,7 +38,6 @@
                   <router-link id="dropDownItem" :to="{ name: 'my-favorite-recipes' }" class="nav-link">My Favorite Recipes</router-link>
                   <router-link id="dropDownItem" :to="{ name: 'my-recipes' }" class="nav-link">My Recipes</router-link>
                   <router-link id="dropDownItem" :to="{ name: 'my-family-recipes' }" class="nav-link">My Family Recipes</router-link>
-                  <router-link id="dropDownItem" :to="{ name: 'my-meal' }" class="nav-link">My Meal</router-link>
                 </b-dropdown>
               </div>
                 <div style="display:inline-block">
@@ -74,6 +81,7 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
     min-height: 100vh;
+    background-color:  #232323;
   }
 
   #nav {
@@ -99,5 +107,13 @@ export default {
     margin-top: 0.5rem;
     margin-right: 1rem;
   }
-
+  .logo {
+  position: center;
+  height: 30px; 
+  margin-right: 10px; 
+  }
+  .slogen{
+    color: rgb(37, 92, 180);
+    display: inline;
+  }
 </style>

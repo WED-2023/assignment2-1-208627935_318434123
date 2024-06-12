@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h3>
+    <h3 class="recipe_p_list_title_header">
       {{ title }}:
       <slot></slot>
     </h3>
@@ -24,12 +24,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    recipes:{
+      type:Array
     }
-  },
-  data() {
-    return {
-      recipes: []
-    };
   },
   mounted() {
     this.updateRecipes();
@@ -40,15 +38,7 @@ export default {
         // const response = await this.axios.get(
         //   this.$root.store.server_domain + "/recipes/random",
         // );
-
-        const amountToFetch = 5; // Set this to how many recipes you want to fetch
-        const response = mockGetRecipesPreview(amountToFetch);
-
-
-        console.log(response);
-        const recipes = response.data.recipes;
-        console.log(recipes);
-        this.recipes = [];
+    
         this.recipes.push(...recipes);
       } catch (error) {
         console.log(error);
@@ -61,5 +51,9 @@ export default {
 <style lang="scss" scoped>
 .container {
   min-height: 400px;
+}
+.recipe_p_list_title_header{
+  color: blue;
+  opacity: 50%;
 }
 </style>

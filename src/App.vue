@@ -1,5 +1,4 @@
 <template>
-
    <div id="app">
     <Navbar></Navbar>
   </div> 
@@ -27,6 +26,9 @@ export default {
 </script>
 <style>
 #app {
+  /* min-height: 100vh; */
+  background-color:  #232323;
+  background-size: cover; 
   height: 100%;
   width: 100%;
   font-family: Helvetica, Arial, sans-serif;
