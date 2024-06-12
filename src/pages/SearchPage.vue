@@ -111,7 +111,7 @@
         let filtered = all_recipes;
         if (this.form.recipe_name) {
           filtered = all_recipes.filter(recipe =>
-            recipe.name.toLowerCase().includes(this.form.recipe_name.toLowerCase())
+            recipe.title.toLowerCase().includes(this.form.recipe_name.toLowerCase())
           );
         }
         console.log("Filtered recipes:", filtered);
