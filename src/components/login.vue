@@ -1,9 +1,8 @@
 <template>
     <div class="login-page">
-      <div class="image-section"></div>
-      <div class="login-container">
-        <h1 class="title">Login</h1>
+      <div class="login_component_container"></div>
         <b-form @submit.prevent="onLogin">
+          <h1 class="title">Login</h1>
           <b-form-group
             id="input-group-Username"
             label-cols-sm="3"
@@ -63,8 +62,8 @@
         >
           Login failed: {{ form.submitError }}
         </b-alert>
-      </div>
     </div>
+
   </template>
   
   <script>
@@ -140,29 +139,13 @@
   <style lang="scss" scoped>
   
   .login-page {
-  
     color: yellow;
     display: flex;
-    height: 100vh;
-  }
-  
-  .image-section {
-    flex: 2;
-    background: url('@/assets/login_image.jpg') no-repeat center center;
-    background-size: cover;
-  }
-  
-  .login-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    overflow: auto;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: rgba(22, 8, 219, 0.966);
-    opacity: 50%;
-    box-sizing: border-box;
-  
+    height: 100vh;
+    margin-top: 0rem;
   }
   
   .login-container h2 {
@@ -206,6 +189,10 @@
   .form-group {
     margin-bottom: 20px;
     width: 100%;
+  }
+  .title{
+    margin-left: 6rem;
+    margin-bottom: 1rem;
   }
   </style>
   

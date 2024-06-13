@@ -5,6 +5,8 @@ import axios from "axios";
 
 import routes from "./routes";
 import VueRouter from "vue-router";
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+Vue.use(IconsPlugin);
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
@@ -13,6 +15,7 @@ const router = new VueRouter({
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+
 import {
   FormGroupPlugin,
   FormPlugin,
@@ -24,7 +27,6 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
-  IconsPlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,

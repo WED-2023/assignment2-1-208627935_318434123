@@ -26,7 +26,8 @@ export default {
       required: true
     },
     recipes:{
-      type:Array
+      type:Array,
+      default: () => []
     }
   },
   mounted() {
@@ -39,7 +40,7 @@ export default {
         //   this.$root.store.server_domain + "/recipes/random",
         // );
     
-        this.recipes.push(...recipes);
+        this.recipes.push(...this.recipes);
       } catch (error) {
         console.log(error);
       }
@@ -53,7 +54,10 @@ export default {
   min-height: 400px;
 }
 .recipe_p_list_title_header{
-  color: blue;
+  color:  rgb(16, 144, 190);
   opacity: 50%;
+}
+.recipePreview{
+  margin: 0.5rem;
 }
 </style>

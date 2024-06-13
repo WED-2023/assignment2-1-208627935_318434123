@@ -1,6 +1,6 @@
 <template>
    <div id="app">
-    <Navbar></Navbar>
+    <Navbar class="nav_bar_div_margin"></Navbar>
   </div> 
 </template>
 

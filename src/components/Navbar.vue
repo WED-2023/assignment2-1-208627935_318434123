@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav_bar_div_margin">
     <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top" >
       <b-navbar-brand href="#" class="mx-auto">
         <img
