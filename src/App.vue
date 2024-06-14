@@ -27,7 +27,7 @@ export default {
 <style>
 #app {
   /* min-height: 100vh; */
-  background-color:  #232323;
+  background-color:  white;
   background-size: cover; 
   height: 100%;
   width: 100%;
@@ -40,14 +40,5 @@ export default {
 
 #nav {
   padding: 10px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

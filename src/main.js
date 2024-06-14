@@ -2,6 +2,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
+import VModal from 'vue-js-modal';
+
+Vue.use(VModal, { dynamic: true, injectModalsContainer: true });
 
 import routes from "./routes";
 import VueRouter from "vue-router";

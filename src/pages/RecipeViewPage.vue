@@ -1,44 +1,45 @@
 <template>
-  <div class="container">
-    <div v-if="recipe">
-      <div class="recipe-header mt-3 mb-4">
-        <h1>{{ recipe.title }}</h1>
-        <img :src="recipe.image" class="center" />
-      </div>
-      <div class="recipe-body">
-        <div class="wrapper">
-          <div class="wrapped">
-            <div class="mb-3">
-              <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
-              <div>Likes: {{ recipe.aggregateLikes }} likes</div>
-            </div>
-            Ingredients:
-            <ul>
-              <li
-                v-for="(r, index) in recipe.extendedIngredients"
-                :key="index + '_' + r.id"
-              >
-                {{ r.original }}
-              </li>
-            </ul>
-          </div>
-          <div class="wrapped">
-            Instructions:
-            <ol>
-              <li v-for="s in recipe._instructions" :key="s.number">
-                {{ s.step }}
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <!-- <pre>
-      {{ $route.params }}
-      {{ recipe }}
-    </pre
-      > -->
+  
+  <div class="recipe-notebook">
+    <div class="recipe-header">
+      <h1>{{recipe.title}}</h1>
     </div>
-  </div>
+    <div class="recipe-content">
+      <div class="recipe-image-section">
+        <img :src="recipe.image" :alt="recipe.title" class="recipe-image">
+      </div>
+      <div class="recipe-info-section">
+        <div class="info-item" v-if="recipe.vegan">🌱 Vegan</div>
+        <div class="info-item" v-if="recipe.vegetarian">🥗 Vegetarian</div>
+        <div class="info-item" v-if="!recipe.vegetarian && !recipe.vegan">Non-Vegetarian</div>
+        <div class="info-item"  v-if="recipe.glutenFree">Gluten Free</div>
+        <div class="info-item"  v-else>🍞 Not Gluten Free 🍞</div>
+      </div>
+      </div>
+      <div class="recipe-ingredients-section">
+        <h2>Ingredients</h2>
+        <ul>
+          <li v-for="(ingredient, index) in recipe.extendedIngredients" :key="index">
+            {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measures.metric.unitLong }}
+          </li>
+        </ul>
+      </div>
+
+
+      <div class="recipe-instructions-section">
+        <h2>Instructions</h2>
+        <ol>
+          <p v-if="recipe._instructions.length === 0" class="no_instructions_p">Sorry, there is no instructions to this recipe.</p>
+          <li v-for="(instruction, index) in recipe._instructions" :key="index">
+            {{instruction}}
+          </li>
+        </ol>
+      </div>
+      <div class="serving_div">
+        {{recipe.servings}} servings
+      </div>
+    </div>
+
 </template>
 
 <script>
@@ -55,17 +56,17 @@ export default {
       // response = this.$route.params.response;
 
       try {
-        response = await this.axios.get(
-          this.$root.store.server_domain + "/recipes/" + this.$route.params.recipeId,
-          {
-            withCredentials: true
-          }
-        );
+        // response = await this.axios.get(
+        //   this.$root.store.server_domain + "/recipes/" + this.$route.params.recipeId,
+        //   {
+        //     withCredentials: true
+        //   }
+        // );
 
         response = mockGetRecipeFullDetails(this.$route.params.recipeId);
 
         console.log("response.status", response);
-        if (response.status !== 200) this.$router.replace("/NotFound");
+        // if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
         this.$router.replace("/NotFound");
@@ -73,6 +74,10 @@ export default {
       }
 
       let {
+        vegan,
+        vegetarian,
+        glutenFree,
+        servings,
         analyzedInstructions,
         instructions,
         extendedIngredients,
@@ -90,6 +95,10 @@ export default {
         .reduce((a, b) => [...a, ...b], []);
 
       let _recipe = {
+        servings,
+        vegan,
+        vegetarian,
+        glutenFree,
         instructions,
         _instructions,
         analyzedInstructions,
@@ -109,19 +118,86 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
+.recipe-notebook {
+  background: rgb(228, 228, 230);
+  border: 2px solid #0c0c0c;
+  border-radius: 20px;
+  width: 80%;
+  align-content: center;
+  align-items: center;
+  margin: 9rem;
+  margin-top: 10rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
 }
-.wrapped {
-  width: 50%;
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-/* .recipe-header{
 
-} */
+.recipe-header h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recipe-image-section {
+  text-align: center;
+}
+
+.recipe-image-section img {
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.recipe-info-section {
+  display: flex;
+  justify-content: space-around;
+
+}
+.recipe-info-section, 
+.recipe-ingredients-section,
+.recipe-instructions-section{
+margin-bottom: 2rem;
+}
+
+.recipe-info-section .info-item {
+  background: #eee;
+  border-radius: 15px;
+  padding: 10px 15px;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.recipe-ingredients-section,
+.recipe-instructions-section {
+  background: #fafafa;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.recipe-ingredients-section h2,
+.recipe-instructions-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.no_instructions_p{
+  font-size: 20px;
+  color: rgb(189, 21, 173);
+}
+
+.recipe-ingredients-section ul,
+.recipe-instructions-section ol {
+  list-style-position: inside;
+  padding: 0 20px;
+}
+.serving_div{
+  text-align: center;
+  font-size: 30px;
+}
+
 </style>

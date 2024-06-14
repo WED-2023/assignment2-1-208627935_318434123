@@ -2,11 +2,12 @@
   <div class="main-recipes-page">
     <div class="row">
       <!-- Left Column - Explore Random Recipes -->
-      <div class="col-md-9">
+      <div class="col-md-10 random_recipes_creator">
           <div class="random-recipes">
+            <h1 class="explore_header">Explore This Recipes:</h1>
             <div class="search-results">
               <RecipePreviewList
-                title="Explore This Recipes"
+   
                 :recipes="randomRecipes"
               />
             </div>
@@ -22,10 +23,11 @@
         
       </div>
       <div v-else>
-        <div class="last-watched-recipes col-md-6">
+        <div class="last-watched-recipes col-md-10">
+          <h1 class="last_header">Last Watched Recipes:</h1>
           <div class="search-results">
             <RecipePreviewList
-              title="Last Watched Recipes"
+ 
               :recipes="lastWatchedRecipes"
             />
           </div>
@@ -37,7 +39,7 @@
 </template>
 
 <script>
- import RecipePreviewList from "../components/RecipePreviewList.vue";
+ import RecipePreviewList from "../components/three_recipes_preview.vue";
 import { mockGetRecipesPreview } from "../services/recipes.js";
 import { shuffleArray } from '../services/shuffle.js'; 
 import { mockGetLastThreeRecipes } from "../services/recipes.js"
@@ -67,15 +69,15 @@ export default {
     getRecentRecipes(){
       this.lastWatchedRecipes= []
       const first_recipe =  mockGetLastThreeRecipes().data.recipes.first_recipe; 
-      const sec_recipe =  mockGetLastThreeRecipes().data.recipes.first_recipe; 
-      const third_recipe =  mockGetLastThreeRecipes().data.recipes.first_recipe; 
+      const sec_recipe =  mockGetLastThreeRecipes().data.recipes.second_recipe; 
+      const third_recipe =  mockGetLastThreeRecipes().data.recipes.third_recipe; 
       this.lastWatchedRecipes = [first_recipe, sec_recipe, third_recipe];
     },
      getAllRecipes() {
       try {
         console.log("Fetching recipes...");
         this.recipes = [];
-        const returned_recipes =  Array.from(mockGetRecipesPreview(50).data.recipes); 
+        const returned_recipes =  Array.from(mockGetRecipesPreview(4).data.recipes); 
         console.log("Recipes fetched:", returned_recipes);
         this.randomRecipes = this.loadRandomRecipes(returned_recipes);
         
@@ -104,32 +106,49 @@ export default {
 .random-recipe {
   margin-bottom: 20px;
 }
+.explore_header, .last_header{
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
 .last-watched-recipe {
   margin-bottom: 20px;
+  align-content: right;
+  place-items: right;
+
+}
+.search-results{
+  margin-left: 7rem;
 }
 .load_other_recipes{
   height: calc(2.5em + .5rem + 1px); 
   padding: .25rem 1rem; 
   border-radius: 50px;  
+  border-color: transparent;
   margin-left: 20rem;
-  background-color: rgb(16, 144, 190);
+  background-color: rgb(177, 184, 187);
 }
 .load_other_recipes_2{
   height: calc(2.5em + .5rem + 1px); 
   padding: .25rem 1rem; 
   border-radius: 50px;  
-  margin-left: 3rem;
-  background-color: rgb(16, 144, 190);
+  margin-left: 15rem;
+  background-color: rgb(191, 180, 191);
   margin-top: 2rem;
 }
+.load_other_recipes:hover {
+  background-color: rgb(158, 170, 175);
+}
+.load_other_recipes_2:hover{
+  background-color: rgb(158, 170, 175);
+}
 .login_side_main_page{
-  background-color: rgb(3, 3, 103);
-  opacity: 50%;
-  place-items: center;
+  background-color: rgb(176, 171, 171);
+  place-items: left;
+  align-content: left;
 }
 .login_or_register_header{
   font-size: 30px;
-  color: rgb(188, 188, 17);
+  color: black;
 }
 </style>
 

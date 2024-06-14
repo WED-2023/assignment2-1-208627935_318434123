@@ -81,7 +81,6 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
     min-height: 100vh;
-    background-color:  #232323;
   }
 
   #nav {
@@ -90,7 +89,7 @@ export default {
 
   #nav a {
     font-weight: bold;
-    color: #2c3e50;
+    color: gray;
   }
 
   #dropDownItem{

@@ -40,7 +40,7 @@ export default {
         //   this.$root.store.server_domain + "/recipes/random",
         // );
     
-        this.recipes.push(...this.recipes);
+        this.recipes;
       } catch (error) {
         console.log(error);
       }

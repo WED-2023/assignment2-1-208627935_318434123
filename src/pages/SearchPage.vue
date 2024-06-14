@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div class="for_image">
     <div class="gap_creator"><br><br></div>
     <div class="search_form_container">
       <h1 class="search_container_header">Search your next meal with reSpie!</h1>
@@ -53,16 +54,16 @@
     </div>
     <div class="search-results" v-if="submitted">
       <RecipePreviewList
-        title="Search Results"
         :recipes="preview"
       />
     </div>
     <div v-else></div>
   </div>
+  </div>
 </template>
 
 <script>
-  import RecipePreviewList from "../components/RecipePreviewList.vue";
+  import RecipePreviewList from "../components/three_recipes_preview.vue";
   import { mockGetRecipesPreview } from "../services/recipes.js";
 
   export default {
@@ -83,8 +84,8 @@
         submitted: false,
         selected: "",
         options_of_recipes: [5, 10, 15],
-        options_of_cuisines: ["ALL", "African", "American", "British", "Caribbean", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", "Mexican", "Thai", "Vietnamese"],
-        options_of_diets: ["ALL", "Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo", "Primal", "Low FODMAP", "Whole30"],
+        options_of_cuisines: ["ALL", "African","Asian","American","British","Cajun","Caribbean","Chinese","Eastern European","European","French","German","Greek","Indian","Irish","Italian","Japanese","Jewish","Korean","Latin American","Mediterranean","Mexican","Middle Eastern","Nordic","Southern","Spanish","Thai","Vietnamese"],
+        options_of_diets: ["ALL","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo", "Primal", "Low FODMAP", "Whole30"],
         options_of_intolerances: ["No intolerances", "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"]
       };
     },
@@ -125,10 +126,13 @@
 </script>
 
 <style scoped>
-.container{
-  margin-top: 55px;
 
+
+.container {
+  display: flex;
+  margin-top: 55px;
 }
+
 .btn-sm{
   background-color: aliceblue;
   color: blue
@@ -153,7 +157,8 @@
 }
 .search_form_container{
  
-  background-color: rgb(23, 106, 183);
+  background-color: aliceblue;
+
   border-radius: 90px;
   width: 70rem;
   height: 9rem;
