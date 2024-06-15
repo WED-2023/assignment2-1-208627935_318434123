@@ -6,7 +6,9 @@ import family_recipes from "../assets/mocks/family_recipes.json";
 import favorite_recipes from "../assets/mocks/favorite_recipes.json";
 import my_recipes from "../assets/mocks/my_recipes.json";
 
-
+export function mockGetFavoriteRecipes(UserID) {
+  return { data: { recipes: favorite_recipes } } ;
+}
 
 export function mockGetRecipesPreview(amount = 1) {
   let recipes = [...recipe_preview];  // Use spread operator to create a copy of the array
@@ -29,15 +31,13 @@ export function mockGetRecipeFullDetails(recipeId) {
 export function mockGetLastThreeRecipes() {
   return { data: { recipes: user_last_recipes } } ;
 }
-// export function mockGetFamilyRecipes() {
-//   return { data: { recipes: family_recipes } } ;
-// }
-// export function mockGetFavoriteRecipes(UserID) {
-//   return { data: { recipes: favorite_recipes } } ;
-// }
-// export function mockGetMyRecipes(UserID) {
-//   return { data: { recipes: my_recipes } } ;
-// }
+export function mockGetFamilyRecipes() {
+  return { data: { recipes: family_recipes } } ;
+}
+
+export function mockGetMyRecipes(UserID) {
+  return { data: { recipes: my_recipes } } ;
+}
 
 
   

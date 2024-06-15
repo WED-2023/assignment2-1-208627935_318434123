@@ -29,8 +29,6 @@ export default {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     background-color: rgba(22, 8, 219, 0.966);
     opacity: 50%;

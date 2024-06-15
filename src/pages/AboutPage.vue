@@ -56,8 +56,8 @@
   <style>
   .aboutSec {
       padding: 55px;
-      background-color: #232323;
-      color: white;
+      background-color: white;
+      color: black;
 
   }
   
@@ -71,8 +71,6 @@
       height: 100%; 
       max-width: 100%;
       max-height: 100%;
-      overflow: auto; 
-      background-color: rgba(1, 22, 11, 0.4); 
     }
   
   .aboutClass-inner {
