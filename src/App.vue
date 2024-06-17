@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <Navbar />
+    
+    <Navbar  />
+    <router-view  />
+  
   </div>
+ 
 </template>
 
 <script>
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 export default {
   
   name: "App",
@@ -17,21 +21,47 @@ export default {
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
+    },
+    openModal() {
+      console.log('openModal method called');
+      console.log(this.isModalVisible);
+      this.isModalVisible = true;
+      console.log(this.isModalVisible);
+    },
+    closeModal() {
+      this.isModalVisible = false;
     }
   },
   components: {
     Navbar
-  }
+  },
+  data() {
+    return {
+      isModalVisible: false
+    };
+  },
 };
 </script>
 <style>
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+ 
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
 #app {
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  flex: 1;  
+  display: flex;
+  flex-direction: column;
 }
-#nav {
-  padding: 10px;
-}
+
 </style>

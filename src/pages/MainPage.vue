@@ -7,7 +7,6 @@
             <h1 class="explore_header">Explore This Recipes:</h1>
             <div class="search-results">
               <RecipePreviewList
-   
                 :recipes="randomRecipes"
               />
             </div>
@@ -100,8 +99,9 @@ export default {
 <style scoped>
 /* Example styles using BootstrapVue classes */
 .main-recipes-page{
-  margin-top:55px;
   display: flex;
+  background: url('@/assets/search.jpg') no-repeat  center fixed;
+  background-size: cover;
 }
 .random-recipe {
   margin-bottom: 20px;
@@ -124,14 +124,15 @@ export default {
   padding: .25rem 1rem; 
   border-radius: 50px;  
   border-color: transparent;
-  margin-left: 20rem;
+  margin-left: 29rem;
+  margin-top: 2rem;
   background-color: rgb(177, 184, 187);
 }
 .load_other_recipes_2{
   height: calc(2.5em + .5rem + 1px); 
   padding: .25rem 1rem; 
   border-radius: 50px;  
-  margin-left: 15rem;
+  margin-left: 20rem;
   background-color: rgb(191, 180, 191);
   margin-top: 2rem;
 }
@@ -142,7 +143,7 @@ export default {
   background-color: rgb(158, 170, 175);
 }
 .login_side_main_page{
-  background-color: rgb(176, 171, 171);
+  background-color: rgb(62, 57, 57);
   place-items: left;
   align-content: left;
 }

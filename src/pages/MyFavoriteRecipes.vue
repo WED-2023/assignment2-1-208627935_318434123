@@ -42,11 +42,13 @@ export default {
 
 <style>
 .favorite_recipes_container{
-    margin-top: 55px;
+
     width: 80%;
     margin-left: 10rem;
 }
 .search_results_favorite{
-    background-color: red;
+
+    width: 80%;
+    margin-left: 10rem;
 }
 </style>

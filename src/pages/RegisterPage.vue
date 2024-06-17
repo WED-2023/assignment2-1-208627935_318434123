@@ -106,6 +106,14 @@
           Have length between 5-10 characters long<br>
           Have at least 1 number<br>
           Have at least 1 special character
+          v
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-else-if="$v.form.password.required && $v.form.password.length"
+        >
+          Have at least 1 number<br>
+          Have at least 1 special character
+          v
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -160,11 +168,12 @@
           variant="primary"
           style="width:250px;"
           class="register-button"
+          @click="Register"
           >Register</b-button>
       </div>
       <div class="mt-2">
         You have an account already?
-        <router-link to="login"> Log in here</router-link>
+        <router-link to="login" class="login_here"> Log in here</router-link>
       </div>
     </b-form>
     <b-alert
@@ -318,20 +327,22 @@ export default {
 <style lang="scss" scoped>
 .register_page_container {
 
-  background-color: #232323;
+  background: url('@/assets/bread_background.jpg') no-repeat  center fixed;
+  background-size: cover;
   box-sizing: border-box;
   color: white;
   display: flex;
-  justify-content: center;
-  align-items: center; 
   overflow: auto; 
   height: 100vh;
+
 
 }
 .register_grid_container{
   box-sizing: border-box;
     width: 30%;
     height: 70%;
+    margin-top: 7rem;
+    margin-left:  10rem;
 }
 
 .button-container {
@@ -343,5 +354,10 @@ export default {
 .register-button {
   flex: 2;
   margin-left: 0.5rem; 
+}
+.login_here{
+  font-weight: 700; 
+  font-size: 1.5em; 
+  color: rgb(36, 218, 224);
 }
 </style>

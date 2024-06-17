@@ -50,8 +50,9 @@
     flex-wrap: wrap;
     gap: 16px;
     padding: 16px;
-    background-color: #f8f8f8;
+    background-color: rgba(255, 255, 255, 0.814);
     border-radius: 16px;
+    opacity: 90%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   .no-results-message {

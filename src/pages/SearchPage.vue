@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="for_image">
-    <div class="gap_creator"><br><br></div>
     <div class="search_form_container">
       <h1 class="search_container_header">Search your next meal with reSpie!</h1>
       <b-form id="searchForm">
@@ -129,8 +128,20 @@
 
 
 .container {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  max-height: 100%;
   
+}
+.for_image{
+  flex: 1;
+  background: url('@/assets/search.jpg') no-repeat  center fixed;
+  background-size: cover;
 }
 
 .btn-sm{
@@ -158,7 +169,8 @@
 .search_form_container{
  
   background-color: aliceblue;
-
+  margin-top: 6rem;
+  margin-left: 24rem;
   border-radius: 90px;
   width: 70rem;
   height: 9rem;
@@ -170,5 +182,10 @@
   font-size: 25px;
   position:static;
   margin-left: 27%;
+}
+.search-results{
+  width: 50%;
+  margin-left: 30rem;
+  margin-top: 2rem;
 }
 </style>

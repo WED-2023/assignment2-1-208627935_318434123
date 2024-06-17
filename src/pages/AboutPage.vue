@@ -55,29 +55,41 @@
   
   <style>
   .aboutSec {
-      padding: 55px;
-      background-color: white;
-      color: black;
+      padding: 0px;
+      font-weight: 800; 
+      font-size: 1em; 
 
+      color: rgb(0, 242, 255);
   }
   
   .headline{
-      color: green;
+      font-weight: 900; 
+      color: rgb(0, 242, 255);
       text-align: center;
   }
   
   #about_page{
-      width: 100%; 
-      height: 100%; 
-      max-width: 100%;
-      max-height: 100%;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    max-height: 100%;
+   
+  
     }
   
   .aboutClass-inner {
-      position: relative;
-      margin: auto;
+      margin-top: 3rem;
       width: 100%;
       max-width: 100%;
+      height: 100%;
+      max-height: 100%;
+      background: url('@/assets/love_cocking.jpg') no-repeat center center fixed;
+      background-size: cover;
+  
     }
   
         
@@ -96,10 +108,15 @@
     text-align: center;
   }
   #last-project-link{
-    color: green;
+    font-weight: 900; 
+    font-size: 2em; 
+    color: #ffffff; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    padding: 10px; 
+    display: inline-block; /* Ensures background color wraps around the text */
     cursor: pointer;
     font-size: 25px;
-    margin-left: 23rem;
+    margin-left: 35rem;
   }
   #text_div{
     margin-right: 10em;

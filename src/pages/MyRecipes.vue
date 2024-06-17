@@ -2,7 +2,7 @@
     
     <div class="favorite_recipes_container">
             <div class="random-recipes">
-              <h1 class="explore_header">Your Favorite Recipes:</h1>
+              <h1 class="explore_header">Your Recipes:</h1>
               <div class="search_results_favorite">
                 <RecipePreviewList
                   :recipes="my_recipes"
@@ -42,11 +42,12 @@
     
     <style>
     .favorite_recipes_container{
-        margin-top: 55px;
+
         width: 80%;
         margin-left: 10rem;
     }
     .search_results_favorite{
-        background-color: rgb(191, 30, 194);
+        width: 80%;
+        margin-left: 10rem;
     }
     </style>
