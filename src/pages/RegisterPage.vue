@@ -341,7 +341,7 @@ export default {
   box-sizing: border-box;
     width: 30%;
     height: 70%;
-    margin-top: 7rem;
+    margin-top: 5rem;
     margin-left:  10rem;
 }
 

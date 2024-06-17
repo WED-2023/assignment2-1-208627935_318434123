@@ -9,9 +9,13 @@
               <RecipePreviewList
                 :recipes="randomRecipes"
               />
+            
+            </div>
+            <div class="button_container">
+              <button @click="getAllRecipes" class="load_other_recipes">Load Other Random Recipes</button>
             </div>
           </div>
-          <button @click="getAllRecipes" :class="{ load_other_recipes: !$root.store.username, load_other_recipes_2: $root.store.username }">Load Other Random Recipes</button>
+         
       </div>
     </div>
 
@@ -111,30 +115,20 @@ export default {
   margin-bottom: 2rem;
 }
 .last-watched-recipe {
-  margin-bottom: 20px;
   align-content: right;
   place-items: right;
 
 }
 .search-results{
-  margin-left: 7rem;
+  transform: translateX(15%)
 }
 .load_other_recipes{
   height: calc(2.5em + .5rem + 1px); 
   padding: .25rem 1rem; 
   border-radius: 50px;  
   border-color: transparent;
-  margin-left: 29rem;
   margin-top: 2rem;
   background-color: rgb(177, 184, 187);
-}
-.load_other_recipes_2{
-  height: calc(2.5em + .5rem + 1px); 
-  padding: .25rem 1rem; 
-  border-radius: 50px;  
-  margin-left: 20rem;
-  background-color: rgb(191, 180, 191);
-  margin-top: 2rem;
 }
 .load_other_recipes:hover {
   background-color: rgb(158, 170, 175);
@@ -146,11 +140,16 @@ export default {
   background-color: rgb(62, 57, 57);
   place-items: left;
   align-content: left;
+
 }
 .login_or_register_header{
   font-size: 30px;
   color: black;
 }
+.button_container{
+  transform: translateX(50%)
+}
+
 </style>
 
 

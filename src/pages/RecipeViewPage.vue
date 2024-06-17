@@ -1,45 +1,45 @@
 <template>
-  
-  <div class="recipe-notebook">
-    <div class="recipe-header">
-      <h1>{{recipe.title}}</h1>
+  <div class="container_for_notebook">
+    <div class="recipe-notebook">
+      <div class="recipe-header">
+        <h1>{{recipe.title}}</h1>
+      </div>
+      <div class="recipe-content">
+        <div class="recipe-image-section">
+          <img :src="recipe.image" :alt="recipe.title" class="recipe-image">
+        </div>
+        <div class="recipe-info-section">
+          <div class="info-item" v-if="recipe.vegan">🌱 Vegan</div>
+          <div class="info-item" v-if="recipe.vegetarian">🥗 Vegetarian</div>
+          <div class="info-item" v-if="!recipe.vegetarian && !recipe.vegan">Non-Vegetarian</div>
+          <div class="info-item"  v-if="recipe.glutenFree">Gluten Free</div>
+          <div class="info-item"  v-else>🍞 Not Gluten Free 🍞</div>
+        </div>
+        </div>
+        <div class="recipe-ingredients-section">
+          <h2>Ingredients</h2>
+          <ul>
+            <li v-for="(ingredient, index) in recipe.extendedIngredients" :key="index">
+              {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measures.metric.unitLong }}
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="recipe-instructions-section">
+          <h2>Instructions</h2>
+          <ol>
+            <p v-if="recipe._instructions.length === 0" class="no_instructions_p">Sorry, there is no instructions to this recipe.</p>
+            <li v-for="(instruction, index) in recipe._instructions" :key="index">
+              {{instruction}}
+            </li>
+          </ol>
+        </div>
+        <div class="serving_div">
+          {{recipe.servings}} servings
+        </div>
     </div>
-    <div class="recipe-content">
-      <div class="recipe-image-section">
-        <img :src="recipe.image" :alt="recipe.title" class="recipe-image">
-      </div>
-      <div class="recipe-info-section">
-        <div class="info-item" v-if="recipe.vegan">🌱 Vegan</div>
-        <div class="info-item" v-if="recipe.vegetarian">🥗 Vegetarian</div>
-        <div class="info-item" v-if="!recipe.vegetarian && !recipe.vegan">Non-Vegetarian</div>
-        <div class="info-item"  v-if="recipe.glutenFree">Gluten Free</div>
-        <div class="info-item"  v-else>🍞 Not Gluten Free 🍞</div>
-      </div>
-      </div>
-      <div class="recipe-ingredients-section">
-        <h2>Ingredients</h2>
-        <ul>
-          <li v-for="(ingredient, index) in recipe.extendedIngredients" :key="index">
-            {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measures.metric.unitLong }}
-          </li>
-        </ul>
-      </div>
-
-
-      <div class="recipe-instructions-section">
-        <h2>Instructions</h2>
-        <ol>
-          <p v-if="recipe._instructions.length === 0" class="no_instructions_p">Sorry, there is no instructions to this recipe.</p>
-          <li v-for="(instruction, index) in recipe._instructions" :key="index">
-            {{instruction}}
-          </li>
-        </ol>
-      </div>
-      <div class="serving_div">
-        {{recipe.servings}} servings
-      </div>
-    </div>
-
+  </div>
 </template>
 
 <script>
@@ -118,11 +118,15 @@ export default {
 </script>
 
 <style scoped>
+.container_for_notebook{
+  align-content: center;
+  justify-content: center;
+}
 .recipe-notebook {
   background: rgb(228, 228, 230);
   border: 2px solid #0c0c0c;
   border-radius: 20px;
-  width: 80%;
+  width: 60%;
   align-content: center;
   align-items: center;
   margin: 9rem;
@@ -130,6 +134,7 @@ export default {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   font-family: 'Arial', sans-serif;
   padding: 20px;
+  margin-left: 24rem;
 }
 
 .recipe-header h1 {

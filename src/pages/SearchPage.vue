@@ -15,28 +15,28 @@
                   class="form-control-sm">
                 </b-form-input>
               </div>
-              <div class="col-3 p-1">
+              <div class="col-2 p-1">
                 <b-form-select
                   v-model="form.number_of_recipes"
                   :options="options_of_recipes"
                   class="form-control-sm">
                 </b-form-select>
               </div>
-              <div class="col-3 p-1">
+              <div class="col-2 p-1">
                 <b-form-select
                   v-model="form.cuisine_type"
                   :options="options_of_cuisines"
                   class="form-control-sm">
                 </b-form-select>
               </div>
-              <div class="col-3 p-1">
+              <div class="col-2 p-1">
                 <b-form-select
                   v-model="form.diet_type"
                   :options="options_of_diets"
                   class="form-control-sm">
                 </b-form-select>
               </div>
-              <div class="col-6 p-1">
+              <div class="col-4 p-1">
                 <b-form-select
                   v-model="form.intolerance_type"
                   :options="options_of_intolerances"
@@ -149,8 +149,7 @@
   color: blue
 }
 .form-group {
-  margin-bottom: 1rem;
-  margin-right: 28rem;
+  transform: translateX(-24%)
 }
 .row {
   margin-left: 0;
@@ -169,23 +168,24 @@
 .search_form_container{
  
   background-color: aliceblue;
-  margin-top: 6rem;
-  margin-left: 24rem;
   border-radius: 90px;
   width: 70rem;
   height: 9rem;
   align-content: center;
   align-items: center;
+  transform: translateX(17%);
+  margin-top: 5rem;
+
 }
 .search_container_header{
 
   font-size: 25px;
   position:static;
-  margin-left: 27%;
+  margin-left: 29%;
 }
 .search-results{
-  width: 50%;
-  margin-left: 30rem;
+  width: 80%;
   margin-top: 2rem;
+  transform: translateX(10%)
 }
 </style>
