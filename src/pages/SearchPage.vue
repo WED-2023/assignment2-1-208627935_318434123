@@ -52,11 +52,21 @@
       </b-form>
     </div>
     <div class="search-results" v-if="submitted">
+      <div class="sort-options">
+        <b-button @click="sortByPrepTime" variant="outline-primary" size="sm">Sort by Preparation Time</b-button>
+        <b-button @click="sortByPopularity" variant="outline-primary" size="sm">Sort by Popularity</b-button>
+      </div>
       <RecipePreviewList
         :recipes="preview"
       />
     </div>
-    <div v-else></div>
+    <div class="search-results" v-else>
+      <div class="sort-options">
+        <b-button @click="sortByPrepTime" variant="outline-primary" size="sm">Sort by Preparation Time</b-button>
+        <b-button @click="sortByPopularity" variant="outline-primary" size="sm">Sort by Popularity</b-button>
+      </div>
+      <RecipePreviewList :recipes="lastSearchResults" v-if="lastSearchResults.length > 0" />
+    </div>
   </div>
   </div>
 </template>
@@ -64,6 +74,9 @@
 <script>
   import RecipePreviewList from "../components/three_recipes_preview.vue";
   import { mockGetRecipesPreview } from "../services/recipes.js";
+  import { mockSortByLikes } from "../services/recipes.js";
+  import { mockSortByTime } from "../services/recipes.js";
+  
 
   export default {
     components: {
@@ -85,9 +98,19 @@
         options_of_recipes: [5, 10, 15],
         options_of_cuisines: ["ALL", "African","Asian","American","British","Cajun","Caribbean","Chinese","Eastern European","European","French","German","Greek","Indian","Irish","Italian","Japanese","Jewish","Korean","Latin American","Mediterranean","Mexican","Middle Eastern","Nordic","Southern","Spanish","Thai","Vietnamese"],
         options_of_diets: ["ALL","Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo", "Primal", "Low FODMAP", "Whole30"],
-        options_of_intolerances: ["No intolerances", "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"]
+        options_of_intolerances: ["No intolerances", "Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"],
+        lastSearchResults: []
       };
     },
+    mounted() {
+    // When the component mounts, check if there are last search results in localStorage
+    const storedResults = localStorage.getItem('lastSearchResults');
+    console.log(storedResults)
+    if (storedResults) {
+      this.lastSearchResults = JSON.parse(storedResults);
+      this.preview =  this.lastSearchResults;
+    }
+  },
     methods: {
       get_recipes() {
         try {
@@ -98,6 +121,7 @@
           this.preview = this.filter_recipes(returned_recipes);
           console.log("Recipes got:", this.preview);
           this.submitted = true;
+          localStorage.setItem('lastSearchResults', JSON.stringify(this.preview));
         } catch (error) {
           console.log(error);
         }
@@ -119,6 +143,13 @@
         console.log(this.form.number_of_recipes, parseInt(this.form.number_of_recipes, 10));
         console.log("after cut:", filtered);
         return filtered;
+      },
+      sortByReadyInMinutes() {
+        this.preview = mockSortByTime(this.preview)
+      },
+      sortByAggregateLikes() {
+        this.preview = mockSortByLikes(this.preview)
+
       }
     }
   }
@@ -173,7 +204,7 @@
   height: 9rem;
   align-content: center;
   align-items: center;
-  transform: translateX(17%);
+  transform: translateX(40%);
   margin-top: 5rem;
 
 }
@@ -187,5 +218,24 @@
   width: 80%;
   margin-top: 2rem;
   transform: translateX(10%)
+}
+.sort-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sort-options b-button {
+  margin-right: 10px;
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 8px 16px;
+}
+
+.sort-options b-button:focus,
+.sort-options b-button:active,
+.sort-options b-button:hover {
+  background-color: #007bff;
+  color: #fff;
 }
 </style>

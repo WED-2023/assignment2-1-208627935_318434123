@@ -134,7 +134,7 @@ export default {
   align-items: center;
 }
 .top_navbar{
-  height: 4rem;
+  height: 100%;
 }
 .create_recipe{
   margin-right: 1rem;

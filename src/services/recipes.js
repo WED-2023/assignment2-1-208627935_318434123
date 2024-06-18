@@ -31,12 +31,19 @@ export function mockGetRecipeFullDetails(recipeId) {
 export function mockGetLastThreeRecipes() {
   return { data: { recipes: user_last_recipes } } ;
 }
-export function mockGetFamilyRecipes() {
+export function mockGetFamilyRecipes(userID) {
+  console.log("the family recipes: ", family_recipes );
   return { data: { recipes: family_recipes } } ;
 }
 
 export function mockGetMyRecipes(UserID) {
   return { data: { recipes: my_recipes } } ;
+}
+export function mockSortByLikes(List_to_sort) {
+  return List_to_sort;
+}
+export function mockSortByTime(List_to_sort) {
+  return List_to_sort;
 }
 
 

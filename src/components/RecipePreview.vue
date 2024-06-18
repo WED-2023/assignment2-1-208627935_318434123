@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'recipes', params: { recipeId: recipe.id } }">
       <div class="image-container" @mouseover="hover = true" @mouseleave="hover = false">
         <img :src="recipe.image" :alt="recipe.title" class="recipe-image">
-        <div v-if="hover" class="hover-indicator">Click to view recipe</div>
+        <div v-if="hover" class="hover-indicator" @click="navigateToRecipe">Click to view recipe</div>
       </div>
     </router-link>
     <h3>{{ recipe.title }}</h3>
