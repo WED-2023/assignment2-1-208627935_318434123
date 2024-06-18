@@ -217,7 +217,7 @@
 .search-results{
   width: 80%;
   margin-top: 2rem;
-  transform: translateX(10%)
+  transform: translateX(16%)
 }
 .sort-options {
   display: flex;
