@@ -128,6 +128,7 @@
   
   <style scoped>
   .container_for_notebook{
+    margin-top: 7rem;
     align-content: center;
     justify-content: center;
   }

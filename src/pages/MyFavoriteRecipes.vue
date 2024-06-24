@@ -42,7 +42,7 @@ export default {
 
 <style>
 .favorite_recipes_container{
-
+    margin-top: 7rem;
     width: 80%;
     margin-left: 10rem;
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark" class="top_navbar">
+    <b-navbar toggleable="lg" type="dark" variant="dark" class="top_navbar  fixed-top">
       <b-navbar-brand class="mx-auto" href="/"
         ><img 
         class="d-inline-block align-top logo"
@@ -133,9 +133,7 @@ export default {
   padding: 1rem;
   align-items: center;
 }
-.top_navbar{
-  height: 100%;
-}
+
 .create_recipe{
   margin-right: 1rem;
   background-color: transparent;

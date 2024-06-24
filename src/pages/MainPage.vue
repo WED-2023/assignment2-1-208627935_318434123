@@ -1,42 +1,49 @@
 <template>
   <div class="main-recipes-page">
-    <div class="row">
-      <!-- Left Column - Explore Random Recipes -->
-      <div class="col-md-10 random_recipes_creator">
-          <div class="random-recipes">
-            <h1 class="explore_header">Explore This Recipes:</h1>
-            <div class="search-results">
-              <RecipePreviewList
-                :recipes="randomRecipes"
-              />
-            
+    <div class="margin-creator">
+      <div class="row">
+        <!-- Left Column - Explore Random Recipes -->
+        <div class="col-md-10 random_recipes_creator">
+            <div class="random-recipes">
+              <h1 class="explore_header">Explore This Recipes:</h1>
+              <div class="search-results">
+                <RecipePreviewList
+                  :recipes="randomRecipes"
+                />
+              
+              </div>
+              <div class="button_container">
+                <button @click="getAllRecipes" class="load_other_recipes">Load Other Random Recipes</button>
+              </div>
             </div>
-            <div class="button_container">
-              <button @click="getAllRecipes" class="load_other_recipes">Load Other Random Recipes</button>
-            </div>
-          </div>
-         
+          
+        </div>
       </div>
     </div>
 
+
       <!-- Right Column - Last Watched Recipes or Login/Register -->
-      <div class="col-md-4 login_side_main_page" v-if="!$root.store.username">
-        <h2 v-if="!$root.store.username" class="login_or_register_header">Login or Register:</h2>
+
+        <div class="col-md-4 login_side_main_page" v-if="!$root.store.username">
+
+          <h2 v-if="!$root.store.username" class="login_or_register_header">Login or Register:</h2>
           <login></login>
-        
-      </div>
-      <div v-else>
-        <div class="last-watched-recipes col-md-10">
-          <h1 class="last_header">Last Watched Recipes:</h1>
-          <div class="search-results">
-            <RecipePreviewList
- 
-              :recipes="lastWatchedRecipes"
-            />
+          <div class="margin-creator"></div>
+        </div>
+        <div v-else>
+          <div class="last-watched-recipes col-md-10">
+            <div class="margin-creator">
+              <h1 class="last_header">Last Watched Recipes:</h1>
+              <div class="search-results">
+                <RecipePreviewList
+    
+                  :recipes="lastWatchedRecipes"
+                />
+              </div>
+           </div>
           </div>
         </div>
-      </div>
-    
+  
   </div>
 
 </template>
@@ -102,6 +109,9 @@ export default {
 
 <style scoped>
 /* Example styles using BootstrapVue classes */
+.margin-creator{
+  margin-top: 7rem;
+}
 .main-recipes-page{
   display: flex;
   background: url('@/assets/search.jpg') no-repeat  center fixed;
@@ -140,7 +150,7 @@ export default {
   background-color: rgb(62, 57, 57);
   place-items: left;
   align-content: left;
-
+  margin-top: 7rem ;
 }
 .login_or_register_header{
   font-size: 30px;

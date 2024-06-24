@@ -69,16 +69,16 @@
   }
   
   #about_page{
-    height: 100%;
+    height: 90%;
     width: 100%;
     margin: 0;
+    margin-top: 5rem;
     padding: 0;
     display: flex;
     flex-direction: column;
     max-width: 100%;
     max-height: 100%;
    
-  
     }
   
   .aboutClass-inner {
