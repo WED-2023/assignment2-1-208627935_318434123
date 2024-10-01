@@ -1,8 +1,5 @@
 const state = {
-
-    server_domain: "http://localhost:3000",
-
-    // server_domain: "http://132.72.65.211/",
-    
-
+  SERVER_IP: "http://localhost",
+  SERVER_PORT: "3000",
+  // SERVER_IP: "http://132.72.65.211/",
 };
