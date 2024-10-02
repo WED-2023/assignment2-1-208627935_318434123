@@ -1,6 +1,14 @@
 // src/services/auth.js
 
+import api from "../main.js";
+const cur_path = "auth";
 
+export async function register(data){
+  return api.post(`${cur_path}/register`, {
+    username: data.username,
+    password: data.password,
+  });
+}
   export function mockLogin(credentials, success = true) {
     // Check if already logged in
     if (!success) {

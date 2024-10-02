@@ -74,6 +74,7 @@ Vue.config.productionTip = false;
 
 const shared_data = {
   server_domain: "http://localhost:3000",
+  // server_domain: "http://https://respie.cs.bgu.ac.il",
   username: localStorage.username,
   login(username) {
     localStorage.setItem("username", username);
@@ -109,4 +110,12 @@ new Vue({
     },
   },
   render: (h) => h(App),
+
 }).$mount("#app");
+const SERVER_DOMAIN = "https://reSpie.cs.bgu.ac.il:443"
+// const SERVER_DOMAIN = "http://localhost:80/"
+const api = axios.create({
+  base_url: SERVER_DOMAIN,
+  with_cardentials: true,
+});
+export default api;

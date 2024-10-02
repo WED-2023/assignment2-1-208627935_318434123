@@ -199,7 +199,8 @@ import {
   sameAs,
   email
 } from "vuelidate/lib/validators";
-import { mockRegister } from "../services/auth.js";
+
+import { register } from "../services/auth.js";
 export default {
   name: "Register",
   data() {
@@ -287,8 +288,8 @@ export default {
           username: this.form.username,
           password: this.form.password
         };
-
-        const response = mockRegister(userDetails);
+        console.log("call backend")
+        const response = register("/register", userDetails);
 
         this.$router.push("/login");
         // console.log(response);
