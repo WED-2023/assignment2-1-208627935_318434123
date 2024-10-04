@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mockGetRecipeFullDetails } from "../services/recipes.js";
+import { getRecipesFullDetails } from "../services/recipes.js";
 export default {
   data() {
     return {
@@ -63,9 +63,9 @@ export default {
         //   }
         // );
 
-        response = mockGetRecipeFullDetails(this.$route.params.recipeId);
+        response = await getRecipesFullDetails(this.$route.params.recipeId);
 
-        console.log("response.status", response);
+        console.log("response.status", response.status);
         // if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
@@ -85,7 +85,7 @@ export default {
         readyInMinutes,
         image,
         title
-      } = response.data.recipe;
+      } = response;
 
       let _instructions = analyzedInstructions
         .map((fstep) => {

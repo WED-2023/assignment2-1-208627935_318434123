@@ -1,5 +1,5 @@
 const state = {
-  SERVER_IP: "http://localhost:3000",
-  // SERVER_PORT: "3000",
-  // SERVER_IP: "http://132.72.65.211/",
+  API_DOMAIN: "https://reSpie.cs.bgu.ac.il:443",
 };
+
+exports.API_DOMAIN = state.API_DOMAIN;

@@ -73,7 +73,7 @@
 
 <script>
   import RecipePreviewList from "../components/three_recipes_preview.vue";
-  import { mockGetRecipesPreview } from "../services/recipes.js";
+  import { mockGetRecipesPreview, searchRecipes } from "../services/recipes.js";
   import { mockSortByLikes } from "../services/recipes.js";
   import { mockSortByTime } from "../services/recipes.js";
   
@@ -112,15 +112,19 @@
     }
   },
     methods: {
-      get_recipes() {
+      async get_recipes() {
         try {
           console.log("Fetching recipes...");
           this.preview = []; // Clear previous results
-          const returned_recipes = mockGetRecipesPreview(50).data.recipes;
-          console.log("Recipes fetched:", returned_recipes);
-          this.preview = this.filter_recipes(returned_recipes);
-          console.log("Recipes got:", this.preview);
-          this.submitted = true;
+          const searchParams = {
+            recipe_name: this.form.recipe_name,
+            number: this.form.number_of_recipes,
+            intolerance: this.form.intolerance_type,
+            diet: this.form.diet_type,
+            cuisine: this.form.cuisine_type
+          };
+          const searchResults = await searchRecipes(searchParams);
+          this.preview = searchResults;
           localStorage.setItem('lastSearchResults', JSON.stringify(this.preview));
         } catch (error) {
           console.log(error);
