@@ -124,7 +124,9 @@
             cuisine: this.form.cuisine_type
           };
           const searchResults = await searchRecipes(searchParams);
+          console.log(searchResults);
           this.preview = searchResults;
+          this.submitted = true;
           localStorage.setItem('lastSearchResults', JSON.stringify(this.preview));
         } catch (error) {
           console.log(error);

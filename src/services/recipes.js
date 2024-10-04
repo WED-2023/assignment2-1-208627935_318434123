@@ -71,12 +71,26 @@ export async function getRecipesFullDetails(recipeId) {
 
 export async function searchRecipes(searchParams) {
   const { recipe_name, cuisine, diet, intolerance, number } = searchParams;
-  let query;
-  if (recipe_name) {
-    query = `recipeName=${recipe_name}&cuisine=${cuisine}&diet=${diet}&intolerance=${intolerance}&number=${number}`;
-  } else {
-    query = `cuisine=${cuisine}&diet=${diet}&intolerance=${intolerance}&number=${number}`;
+  let query = "";
+  if (recipe_name != '') {
+    query += `recipeName=${recipe_name}&`;
   }
+  if (cuisine != 'ALL') {
+    query += `cuisine=${cuisine}&`;
+  }
+  if (diet != 'ALL') {
+    query += `diet=${diet}&`;
+  }
+  if (intolerance != 'No intolerances') {
+    query += `intolerance=${intolerance}&`;
+  }
+  query += `number=${number}`;
+
+  // Remove the trailing '&' if query is not empty
+  if (query.length > 0) {
+    query = query.slice(0, -1);
+  }
+
   return await fetch(`${API_DOMAIN}/recipes/search?${query}`, {
     method: "GET",
     headers: {
