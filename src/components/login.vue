@@ -97,28 +97,25 @@
       },
       async Login() {
         try {
-          
           const userDetails = {
             username: this.form.username,
             password: this.form.password
           };
           await login(userDetails);
-  
+
           console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
-          if (this.$route.path !== "/"){
+          
+          if (this.$route.path !== "/") {
             this.$router.push("/");
           }
         } catch (err) {
-          console.log(err.response);
-          if(err.response.status === 401){
-            this.form.submitError = "Invalid username or password";
-          } else {
-            this.form.submitError = err.response.data.message;
-          }
+        
+          this.form.submitError = err.message;
+          this.form.username = '';
+          this.form.password = '';
         }
       },
-  
       onLogin() {
         // console.log("login method called");
         this.form.submitError = undefined;

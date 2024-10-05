@@ -102,9 +102,16 @@
           <router-link to="login" class="login_here"> Log in here</router-link>
         </div>
       </b-form>
-      <b-alert class="mt-2" v-if="form.submitError" variant="warning" dismissible show>
-        Register failed: {{ form.submitError }}
-      </b-alert>
+      <b-alert
+          class="mt-2"
+          v-if="form.submitError"
+          variant="warning"
+          dismissible
+          show
+        >
+          Register failed: {{ form.submitError }}
+        </b-alert>
+
     </div>
   </div>
 </template>
@@ -119,8 +126,8 @@ import {
   sameAs,
   email
 } from "vuelidate/lib/validators";
-import { API_DOMAIN } from "../store.js";
 import { register } from "../services/auth.js";
+
 export default {
   name: "Register",
   data() {
@@ -133,10 +140,9 @@ export default {
         password: "",
         confirmedPassword: "",
         email: "",
-        submitError: undefined
+        submitError: null // Set submitError to null initially
       },
       countries: [{ value: null, text: "", disabled: true }],
-      errors: [],
       validated: false
     };
   },
@@ -147,22 +153,16 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha
       },
-      firstName: {
-        required
-      },
-      lastName: {
-        required
-      },
-      country: {
-        required
-      },
+      firstName: { required },
+      lastName: { required },
+      country: { required },
       password: {
         required,
         length: (p) => minLength(5)(p) && maxLength(10)(p),
         valid: function (value) {
-          const containsNumber = /[0-9]/.test(value)
-          const containsSpecial = /[#?!@$%^&*-]/.test(value)
-          return containsNumber && containsSpecial
+          const containsNumber = /[0-9]/.test(value);
+          const containsSpecial = /[#?!@$%^&*-]/.test(value);
+          return containsNumber && containsSpecial;
         }
       },
       confirmedPassword: {
@@ -172,19 +172,11 @@ export default {
       email: {
         required,
         email
-      },
-      containsNumber: function (value) {
-        return /[0-9]/.test(value)
-      },
-      containsSpecial: function (value) {
-        return /[#?!@$%^&*-]/.test(value)
       }
     }
   },
   mounted() {
-    // console.log("mounted");
     this.countries.push(...countries);
-    // console.log($v);
   },
   methods: {
     validateState(param) {
@@ -193,38 +185,25 @@ export default {
     },
     async Register() {
       try {
-
         const userDetails = {
           username: this.form.username,
           password: this.form.password
         };
-        console.log(userDetails);
-        console.log("make register request");
+        console.log("Making register request with:", userDetails);
         await register(userDetails);
-
         this.$router.push("/login");
-        // console.log(response);
       } catch (err) {
-        console.log(err.response);
-        if (err.response.data.message.includes("username already exists")) {
-          this.form.submitError = "Username already exists";
-          this.form.username = "Username already exists";
-        } else {
-          this.form.submitError = err.response.data.message;
-        }
-        //@TODO doesn't show error when username is taken
-        this.onReset();
+        // Update submitError with the error message
+        this.form.submitError = err.response ? err.response.data.message : err.message;
       }
     },
-
-    async onRegister() {
-      console.log("register method called");
-      this.$v.form.$touch();
+    onRegister() {
+      this.form.submitError = null; // Reset the error on form submission
+      this.$v.form.$touch(); // Touch the form to trigger validation
       if (this.$v.form.$anyError) {
-        return;
+        return; // Exit if there are validation errors
       }
-      // console.log("register method go");
-      await this.Register();
+      this.Register(); // Call Register if no errors
     },
     onReset() {
       this.form = {
@@ -234,15 +213,17 @@ export default {
         country: null,
         password: "",
         confirmedPassword: "",
-        email: ""
+        email: "",
+        submitError: null
       };
       this.$nextTick(() => {
-        this.$v.$reset();
+        this.$v.$reset(); // Reset validation after resetting the form
       });
     }
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .register_page_container {
 
