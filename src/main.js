@@ -115,7 +115,7 @@ new Vue({
 const SERVER_DOMAIN = "https://reSpie.cs.bgu.ac.il:443"
 // const SERVER_DOMAIN = "http://localhost:80/"
 const api = axios.create({
-  base_url: SERVER_DOMAIN,
-  with_cardentials: true,
+  baseURL: SERVER_DOMAIN,
+  withCredentials: true,
 });
 export default api;

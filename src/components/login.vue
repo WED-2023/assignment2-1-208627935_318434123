@@ -106,9 +106,9 @@
           console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
           
-          if (this.$route.path !== "/") {
-            this.$router.push("/");
-          }
+          this.$router.push("/").catch(() => {
+            this.$forceUpdate();
+          });
         } catch (err) {
         
           this.form.submitError = err.message;

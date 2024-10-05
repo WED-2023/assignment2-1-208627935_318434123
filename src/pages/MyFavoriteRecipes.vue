@@ -15,7 +15,7 @@
 
 <script>
 import RecipePreviewList from "../components/three_recipes_preview.vue";
-import {mockGetFavoriteRecipes} from "../services/recipes.js";
+import { getFavoriteRecipes } from "../services/user.js";
 
 
 export default {
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     async getFavoriteRecipes(){
-        this.favorite_recipes = await Array.from(mockGetFavoriteRecipes("555").data.recipes);
+        this.favorite_recipes = await getFavoriteRecipes();
     }
   }
 };
