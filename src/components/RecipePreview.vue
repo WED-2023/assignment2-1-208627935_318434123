@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { toggleFavoriteDB } from '../services/user.js';
 export default {
   props: {
     recipe: {
@@ -42,8 +43,9 @@ export default {
       this.recipe.isViewed = true;
       this.$emit('navigate-to-recipe', this.recipe.id);
     },
-    toggleFavorite() {
+    async toggleFavorite() {
       this.recipe.isFavorite = !this.recipe.isFavorite;
+      await toggleFavoriteDB(this.recipe.id, this.recipe.isFavorite);
       this.$emit('toggle-favorite', this.recipe.id, this.recipe.isFavorite);
     }
   }

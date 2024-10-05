@@ -52,20 +52,12 @@ export default {
   },
   async created() {
     try {
-      let response;
-      // response = this.$route.params.response;
 
       try {
-        // response = await this.axios.get(
-        //   this.$root.store.server_domain + "/recipes/" + this.$route.params.recipeId,
-        //   {
-        //     withCredentials: true
-        //   }
-        // );
 
-        response = await getRecipesFullDetails(this.$route.params.recipeId);
+        const response = await getRecipesFullDetails(this.$route.params.recipeId);
 
-        console.log("response.status", response.status);
+        console.log("response", response);
         // if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);

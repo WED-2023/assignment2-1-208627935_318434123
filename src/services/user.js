@@ -16,7 +16,22 @@ export async function getFavoriteRecipesPreview() {
   return response.json();
 }
 
-export async function getMyRecipesPreview(){
+export async function toggleFavoriteDB(recipeId, isFavorite) {
+  const response = await fetch(`${API_DOMAIN}/${userPath}/toggle_favorite`, {
+    method: "POST",
+    credentials: "include",
+    body: JSON.stringify({
+      recipe_id: recipeId,
+      isFavorite: isFavorite,
+    }),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to mark favorite");
+  }
+  return response.json();
+}
+
+export async function getMyRecipesPreview() {
   const response = await fetch(`${API_DOMAIN}/${userPath}/MyRecipes/preview`, {
     method: "GET",
     credentials: "include",
