@@ -81,10 +81,8 @@ export default {
     async getAllRecipes() {
       try {
         console.log("Fetching recipes...");
-        this.recipes = [];
-        const returned_recipes = Array.from(mockGetRecipesPreview(4).data.recipes);
-        console.log("Recipes fetched:", returned_recipes);
-        this.randomRecipes = await this.loadRandomRecipes(returned_recipes);
+        this.randomRecipes = "LOADING..."
+        this.randomRecipes = await this.loadRandomRecipes();
 
         console.log("Random recipes:", this.randomRecipes);
       } catch (error) {
