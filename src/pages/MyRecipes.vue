@@ -15,7 +15,7 @@
     
     <script>
     import RecipePreviewList from "../components/three_recipes_preview.vue";
-    import {mockGetMyRecipes} from "../services/recipes.js";
+    import { getMyRecipesPreview } from "../services/user.js";
     
     
     export default {
@@ -33,7 +33,7 @@
       },
       methods: {
         async getMyRecipes(){
-            this.my_recipes = await Array.from(mockGetMyRecipes("555").data.recipes);
+            this.my_recipes = await getMyRecipesPreview();
         }
       }
     };

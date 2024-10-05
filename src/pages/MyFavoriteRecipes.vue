@@ -15,7 +15,7 @@
 
 <script>
 import RecipePreviewList from "../components/three_recipes_preview.vue";
-import { getFavoriteRecipes } from "../services/user.js";
+import { getFavoriteRecipesPreview } from "../services/user.js";
 
 
 export default {
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     async getFavoriteRecipes(){
-        this.favorite_recipes = await getFavoriteRecipes();
+        this.favorite_recipes = await getFavoriteRecipesPreview();
     }
   }
 };

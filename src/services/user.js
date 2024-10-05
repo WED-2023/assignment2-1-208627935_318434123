@@ -5,7 +5,7 @@ import { API_DOMAIN } from "../store";
 
 const userPath = "user";
 
-export async function getFavoriteRecipes() {
+export async function getFavoriteRecipesPreview() {
   const response = await fetch(`${API_DOMAIN}/${userPath}/favorites/preview`, {
     method: "GET",
     credentials: "include",
@@ -16,6 +16,16 @@ export async function getFavoriteRecipes() {
   return response.json();
 }
 
+export async function getMyRecipesPreview(){
+  const response = await fetch(`${API_DOMAIN}/${userPath}/MyRecipes/preview`, {
+    method: "GET",
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch my recipes");
+  }
+  return response.json();
+}
 export function mockAddFavorite(recipeId) {
   return {
     status: 200,
