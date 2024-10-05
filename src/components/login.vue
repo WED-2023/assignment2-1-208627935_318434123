@@ -68,7 +68,7 @@
   
   <script>
   import { required } from "vuelidate/lib/validators";
-  import {mockLogin} from "../services/auth.js"
+  import { login } from "../services/auth.js"
   export default {
     name: "Login",
     data() {
@@ -98,21 +98,12 @@
       async Login() {
         try {
           
-          // const response = await this.axios.post(
-          //   this.$root.store.server_domain +"/Login",
+          const userDetails = {
+            username: this.form.username,
+            password: this.form.password
+          };
+          await login(userDetails);
   
-  
-          //   {
-          //     username: this.form.username,
-          //     password: this.form.password
-          //   }
-          // );
-  
-          const success = true; // modify this to test the error handling
-          const response = mockLogin(this.form.username, this.form.password, success);
-  
-          // console.log(response);
-          // this.$root.loggedIn = true;
           console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
           if (this.$route.path !== "/"){
@@ -120,7 +111,11 @@
           }
         } catch (err) {
           console.log(err.response);
-          this.form.submitError = err.response.data.message;
+          if(err.response.status === 401){
+            this.form.submitError = "Invalid username or password";
+          } else {
+            this.form.submitError = err.response.data.message;
+          }
         }
       },
   
