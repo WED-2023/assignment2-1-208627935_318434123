@@ -52,10 +52,11 @@ export default {
   },
   async created() {
     try {
+      let response;
 
       try {
 
-        const response = await getRecipesFullDetails(this.$route.params.recipeId);
+        response = await getRecipesFullDetails(this.$route.params.recipeId);
 
         console.log("response", response);
         // if (response.status !== 200) this.$router.replace("/NotFound");
