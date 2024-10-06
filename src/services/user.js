@@ -45,6 +45,23 @@ export async function getMyRecipesPreview() {
   }
   return response.json();
 }
+
+export async function createUserRecipe(recipe) {
+
+  const response = await fetch(`${API_DOMAIN}/${userPath}/createRecipe`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(recipe),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to add recipe");
+  }
+}
+
 export function mockAddFavorite(recipeId) {
   return {
     status: 200,

@@ -110,7 +110,7 @@
 
 <script>
 
-import axios from 'axios';
+import { createUserRecipe } from '../services/user.js';
 
 export default {
  data() {
@@ -139,7 +139,7 @@ export default {
    }
  },
  methods: {
-   handleCreateRecipe() {
+   async handleCreateRecipe() {
      // Define the path to the JSON file
      const filePath = '../assets/mocks/recipe_full_view.json';
 
@@ -150,8 +150,9 @@ export default {
      } catch (err) {
        console.error('Error reading recipes:', err);
      }
-
+     await createUserRecipe(this.recipe);
      // Add the new recipe to the recipes array
+     console.log(this.recipe)
      recipes.push(this.recipe);
 
      // Write the updated recipes array back to the JSON file
