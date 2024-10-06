@@ -29,7 +29,7 @@ export function mockGetRecipeFullDetails(recipeId) {
 }
 
 export function mockGetLastThreeRecipes() {
-  console.log(state);
+
   return { data: { recipes: user_last_recipes } };
 }
 export function mockGetFamilyRecipes(userID) {

@@ -44,6 +44,8 @@ export default {
       this.$emit('navigate-to-recipe', this.recipe.id);
     },
     async toggleFavorite() {
+      console.log("recipe is:::::  ", this.recipe);
+      console.log("dsf4sdf120ds");
       this.recipe.isFavorite = !this.recipe.isFavorite;
       await toggleFavoriteDB(this.recipe.id, this.recipe.isFavorite);
       this.$emit('toggle-favorite', this.recipe.id, this.recipe.isFavorite);

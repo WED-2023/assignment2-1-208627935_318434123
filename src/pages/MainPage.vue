@@ -28,7 +28,7 @@
       <login></login>
       <div class="margin-creator"></div>
     </div>
-    <div v-else>
+    <!-- <div v-else>
       <div class="last-watched-recipes col-md-10">
         <div class="margin-creator">
           <h1 class="last_header">Last Watched Recipes:</h1>
@@ -36,8 +36,8 @@
             <RecipePreviewList :recipes="lastWatchedRecipes" />
           </div>
         </div>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
 
   </div>
 

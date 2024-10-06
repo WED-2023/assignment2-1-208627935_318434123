@@ -17,9 +17,13 @@ export async function getFavoriteRecipesPreview() {
 }
 
 export async function toggleFavoriteDB(recipeId, isFavorite) {
+  console.log(recipeId, isFavorite)
   const response = await fetch(`${API_DOMAIN}/${userPath}/toggle_favorite`, {
     method: "POST",
     credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       recipe_id: recipeId,
       isFavorite: isFavorite,
