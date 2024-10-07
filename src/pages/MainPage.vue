@@ -8,7 +8,6 @@
             <h1 class="explore_header">Explore This Recipes:</h1>
             <div class="search-results">
               <RecipePreviewList :recipes="randomRecipes" />
-
             </div>
             <div class="button_container">
               <button @click="getAllRecipes" class="load_other_recipes">Load Other Random Recipes</button>
@@ -28,16 +27,16 @@
       <login></login>
       <div class="margin-creator"></div>
     </div>
-    <!-- <div v-else>
+    <div v-else>
       <div class="last-watched-recipes col-md-10">
         <div class="margin-creator">
-          <h1 class="last_header">Last Watched Recipes:</h1>
+          <h1 class="last_header">Recommended For You:</h1>
           <div class="search-results">
             <RecipePreviewList :recipes="lastWatchedRecipes" />
           </div>
         </div>
-      </div> -->
-    <!-- </div> -->
+      </div> 
+    </div>
 
   </div>
 
@@ -72,11 +71,13 @@ export default {
   },
   methods: {
     async getRecentRecipes() {
+      try {
+        this.lastWatchedRecipes= "Loading... "
+        this.lastWatchedRecipes = await this.loadRandomRecipes();
+    } catch (error) {
       this.lastWatchedRecipes = []
-      const first_recipe = mockGetLastThreeRecipes().data.recipes.first_recipe;
-      const sec_recipe = mockGetLastThreeRecipes().data.recipes.second_recipe;
-      const third_recipe = mockGetLastThreeRecipes().data.recipes.third_recipe;
-      this.lastWatchedRecipes = [first_recipe, sec_recipe, third_recipe];
+      console.error("Error fetching recipes:", error);
+     }
     },
     async getAllRecipes() {
       try {
@@ -86,6 +87,7 @@ export default {
 
         console.log("Random recipes:", this.randomRecipes);
       } catch (error) {
+        this.lastWatchedRecipes = []
         console.error("Error fetching recipes:", error);
       }
     },
@@ -122,11 +124,13 @@ export default {
   margin-bottom: 20px;
 }
 
-.explore_header,
-.last_header {
+.explore_header,.last_header
+ {
+
   margin-left: 2rem;
   margin-bottom: 2rem;
 }
+
 
 .last-watched-recipe {
   align-content: right;

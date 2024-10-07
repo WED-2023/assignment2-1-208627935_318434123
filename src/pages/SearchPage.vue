@@ -52,19 +52,19 @@
       </b-form>
     </div>
     <div class="search-results" v-if="submitted">
-      <div class="sort-options">
+      <!-- <div class="sort-options">
         <b-button @click="sortByPrepTime" variant="outline-primary" size="sm">Sort by Preparation Time</b-button>
         <b-button @click="sortByPopularity" variant="outline-primary" size="sm">Sort by Popularity</b-button>
-      </div>
+      </div> -->
       <RecipePreviewList
         :recipes="preview"
       />
     </div>
     <div class="search-results" v-else>
-      <div class="sort-options">
+      <!-- <div class="sort-options">
         <b-button @click="sortByPrepTime" variant="outline-primary" size="sm">Sort by Preparation Time</b-button>
         <b-button @click="sortByPopularity" variant="outline-primary" size="sm">Sort by Popularity</b-button>
-      </div>
+      </div> -->
       <RecipePreviewList :recipes="lastSearchResults" v-if="lastSearchResults.length > 0" />
     </div>
   </div>
@@ -73,9 +73,9 @@
 
 <script>
   import RecipePreviewList from "../components/three_recipes_preview.vue";
-  import { mockGetRecipesPreview, searchRecipes } from "../services/recipes.js";
   import { mockSortByLikes } from "../services/recipes.js";
   import { mockSortByTime } from "../services/recipes.js";
+  import { searchRecipes } from "../services/recipes.js";
   
 
   export default {
@@ -123,8 +123,8 @@
             diet: this.form.diet_type,
             cuisine: this.form.cuisine_type
           };
+          this.preview = "LOADING..."
           const searchResults = await searchRecipes(searchParams);
-          console.log(searchResults);
           this.preview = searchResults;
           this.submitted = true;
           localStorage.setItem('lastSearchResults', JSON.stringify(this.preview));
@@ -176,6 +176,11 @@
   max-height: 100%;
   
 }
+.searchForm{
+  margin-right: 20rem;
+  align-content: center;  
+  align-items: center;
+}
 .for_image{
   flex: 1;
   background: url('@/assets/search.jpg') no-repeat  center fixed;
@@ -206,12 +211,15 @@
 .search_form_container{
  
   background-color: aliceblue;
+  position: relative;
   border-radius: 90px;
   width: 70rem;
   height: 9rem;
   align-content: center;
   align-items: center;
   transform: translateX(40%);
+  left: 0rem;
+  right:60rem;
   margin-top: 5rem;
 
 }

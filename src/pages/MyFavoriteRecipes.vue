@@ -33,7 +33,13 @@ export default {
   },
   methods: {
     async getFavoriteRecipes(){
+      try{
+        this.favorite_recipes = "Loading... "
         this.favorite_recipes = await getFavoriteRecipesPreview();
+      }
+      catch{
+        this.favorite_recipes = []
+      }
     }
   }
 };

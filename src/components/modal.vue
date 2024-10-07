@@ -145,11 +145,7 @@ export default {
 
      // Read existing recipes from the file, if any
      let recipes = [];
-     try {
-       recipes = JSON.parse(fs.readFileSync(filePath));
-     } catch (err) {
-       console.error('Error reading recipes:', err);
-     }
+
      await createUserRecipe(this.recipe);
      // Add the new recipe to the recipes array
      console.log(this.recipe)
@@ -157,8 +153,7 @@ export default {
 
      // Write the updated recipes array back to the JSON file
      try {
-       fs.writeFileSync(filePath, JSON.stringify(recipes, null, 2));
-       console.log('Recipe added successfully to recipes.json');
+       console.log('Recipe added successfully to recipes');
        // Optionally, you can add a toast or message to indicate success
        this.$bvToast.toast('Recipe created successfully and saved to file!', {
          title: 'Success',

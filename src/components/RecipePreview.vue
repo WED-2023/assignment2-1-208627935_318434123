@@ -8,7 +8,7 @@
     </router-link>
     <h3>{{ recipe.title }}</h3>
     <p>Preparation Time: {{ recipe.readyInMinutes }} minutes</p>
-    <p>Popularity: {{ recipe.aggregateLikes }} likes</p>
+    <p>Popularity: {{ parseInt(recipe.aggregateLikes, 10) }} likes</p>
     <p>
       <span v-if="recipe.vegan">🌱 Vegan</span>
       <span v-if="recipe.vegetarian">🥗 Vegetarian</span>
