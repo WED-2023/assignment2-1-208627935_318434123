@@ -1,6 +1,6 @@
 <template>
 
-  <div class="create_recipe_div">
+  <div class="create_recipe_div" v-if="show">
      <div class="gap_creator"><br><br></div>
      <div class="form_to_create_recipe_container">
        <b-form @submit.stop.prevent="handleCreateRecipe" class="form_to_create_recipe">
@@ -128,6 +128,7 @@ export default {
        extendedIngredients: [],
        servings: 0,
      },
+     show: true,
      ingredientSearch: '',
      allIngredients: ['Flour', 'Sugar', 'Salt', 'Butter', 'Milk', 'Eggs', 'Baking Powder', 'Vanilla', 'Chocolate Chips'],
      filteredIngredients: [],
@@ -160,8 +161,9 @@ export default {
          variant: 'success',
          solid: true
        });
-       this.$bvModal.hide('create-recipe-modal');
+       
        this.$emit('recipe-created', this.recipe); // Emit the new recipe data
+       this.show = false;
      } catch (err) {
        console.error('Error writing recipe to file:', err);
        // Handle error with a toast or message
