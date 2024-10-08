@@ -2,7 +2,7 @@
   <div class="container_for_notebook">
     <div class="recipe-notebook">
       <div class="recipe-header">
-        <h1>{{recipe.title}}</h1>
+        <h1>{{ recipe.title }}</h1>
       </div>
       <div class="recipe-content">
         <div class="recipe-image-section">
@@ -12,32 +12,34 @@
           <div class="info-item" v-if="recipe.vegan">🌱 Vegan</div>
           <div class="info-item" v-if="recipe.vegetarian">🥗 Vegetarian</div>
           <div class="info-item" v-if="!recipe.vegetarian && !recipe.vegan">Non-Vegetarian</div>
-          <div class="info-item"  v-if="recipe.glutenFree">Gluten Free</div>
-          <div class="info-item"  v-else>🍞 Not Gluten Free 🍞</div>
+          <div class="info-item" v-if="recipe.glutenFree">Gluten Free</div>
+          <div class="info-item" v-else>🍞 Not Gluten Free 🍞</div>
         </div>
-        </div>
-        <div class="recipe-ingredients-section">
-          <h2>Ingredients</h2>
-          <ul>
-            <li v-for="(ingredient, index) in recipe.extendedIngredients" :key="index">
-              {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measures.metric.unitLong }}
-            </li>
-          </ul>
-        </div>
+      </div>
+      <div class="recipe-ingredients-section">
+        <h2>Ingredients</h2>
+        <ul>
+          <li v-for="(ingredient, index) in recipe.extendedIngredients" :key="index">
+            {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.measures.metric.unitLong }}
+          </li>
+        </ul>
+      </div>
 
 
-        <div class="recipe-instructions-section">
-          <h2>Instructions</h2>
-          <ol>
-            <p v-if="recipe._instructions.length === 0" class="no_instructions_p">Sorry, there is no instructions to this recipe.</p>
-            <li v-for="(instruction, index) in recipe._instructions" :key="index">
-              {{instruction}}
-            </li>
-          </ol>
-        </div>
-        <div class="serving_div">
-          {{recipe.servings}} servings
-        </div>
+      <div class="recipe-instructions-section">
+        <h2>Instructions</h2>
+        <ol>
+          <p v-if="recipe._instructions.length === 0" class="no_instructions_p">Sorry, there is no instructions to this
+            recipe.</p>
+          <li v-for="(instruction, index) in recipe._instructions" :key="index">
+            {{ instruction }}
+            <br>
+          </li>
+        </ol>
+      </div>
+      <div class="serving_div">
+        {{ recipe.servings }} servings
+      </div>
     </div>
   </div>
 </template>
@@ -80,12 +82,9 @@ export default {
         title
       } = response;
 
-      let _instructions = analyzedInstructions
-        .map((fstep) => {
-          fstep.steps[0].step = fstep.name + fstep.steps[0].step;
-          return fstep.steps;
-        })
-        .reduce((a, b) => [...a, ...b], []);
+      const _instructions = analyzedInstructions[0].steps.map(step => {
+        return `${step.step}`;
+      });
 
       let _recipe = {
         servings,
@@ -111,10 +110,11 @@ export default {
 </script>
 
 <style scoped>
-.container_for_notebook{
+.container_for_notebook {
   align-content: center;
   justify-content: center;
 }
+
 .recipe-notebook {
   background: rgb(228, 228, 230);
   border: 2px solid #0c0c0c;
@@ -124,7 +124,7 @@ export default {
   align-items: center;
   margin: 9rem;
   margin-top: 10rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
   padding: 20px;
   margin-left: 24rem;
@@ -156,10 +156,11 @@ export default {
   justify-content: space-around;
 
 }
-.recipe-info-section, 
+
+.recipe-info-section,
 .recipe-ingredients-section,
-.recipe-instructions-section{
-margin-bottom: 2rem;
+.recipe-instructions-section {
+  margin-bottom: 2rem;
 }
 
 .recipe-info-section .info-item {
@@ -167,7 +168,7 @@ margin-bottom: 2rem;
   border-radius: 15px;
   padding: 10px 15px;
   text-align: center;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .recipe-ingredients-section,
@@ -175,7 +176,7 @@ margin-bottom: 2rem;
   background: #fafafa;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .recipe-ingredients-section h2,
@@ -183,7 +184,8 @@ margin-bottom: 2rem;
   text-align: center;
   margin-bottom: 10px;
 }
-.no_instructions_p{
+
+.no_instructions_p {
   font-size: 20px;
   color: rgb(189, 21, 173);
 }
@@ -193,9 +195,9 @@ margin-bottom: 2rem;
   list-style-position: inside;
   padding: 0 20px;
 }
-.serving_div{
+
+.serving_div {
   text-align: center;
   font-size: 30px;
 }
-
 </style>
