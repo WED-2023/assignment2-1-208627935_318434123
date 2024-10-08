@@ -130,7 +130,25 @@ export default {
      },
      show: true,
      ingredientSearch: '',
-     allIngredients: ['Flour', 'Sugar', 'Salt', 'Butter', 'Milk', 'Eggs', 'Baking Powder', 'Vanilla', 'Chocolate Chips'],
+     allIngredients: [
+  'Flour', 'Sugar', 'Salt', 'Butter', 'Milk', 'Eggs', 'Baking Powder', 
+  'Vanilla', 'Chocolate Chips', 'Cinnamon', 'Yeast', 'Olive Oil', 
+  'Brown Sugar', 'Honey', 'Maple Syrup', 'Cocoa Powder', 'Baking Soda', 
+  'Heavy Cream', 'Cornstarch', 'Almond Extract', 'Lemon Juice', 
+  'Peanut Butter', 'Oats', 'Raisins', 'Walnuts', 'Pecans', 
+  'Coconut Oil', 'Almond Flour', 'Coconut Milk', 'Cream Cheese', 
+  'Sour Cream', 'Greek Yogurt', 'Garlic Powder', 'Onion Powder', 
+  'Paprika', 'Ground Black Pepper', 'Soy Sauce', 'Mustard', 
+  'Ground Ginger', 'Ground Nutmeg', 'Chili Powder', 'Ground Cumin', 
+  'Parsley', 'Basil', 'Thyme', 'Rosemary', 'Oregano', 'Tomato Paste', 
+  'Parmesan Cheese', 'Mozzarella Cheese', 'Cheddar Cheese', 'Breadcrumbs', 
+  'Chicken Broth', 'Beef Broth', 'Vegetable Broth', 'Red Wine Vinegar', 
+  'White Wine Vinegar', 'Apple Cider Vinegar', 'Lime Juice', 'Avocados', 
+  'Carrots', 'Celery', 'Bell Peppers', 'Mushrooms', 'Zucchini', 'Spinach', 
+  'Ground Beef', 'Chicken Breast', 'Pork Chops', 'Salmon', 'Shrimp', 
+  'Tofu', 'Lentils', 'Black Beans', 'Chickpeas', 'Quinoa', 'Rice', 'Pasta'
+]
+,
      filteredIngredients: [],
    };
  },

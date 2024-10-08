@@ -116,6 +116,7 @@
         try {
           console.log("Fetching recipes...");
           this.preview = []; // Clear previous results
+          console.log("nmumber of recipes is :", this.form.number_of_recipes)
           const searchParams = {
             recipe_name: this.form.recipe_name,
             number: this.form.number_of_recipes,

@@ -72,6 +72,8 @@ export async function getRecipesFullDetails(recipeId) {
 export async function searchRecipes(searchParams) {
   const { recipe_name, cuisine, diet, intolerance, number } = searchParams;
   let query = "";
+  console.log("Number value:", number);
+
   if (recipe_name != '') {
     query += `recipeName=${recipe_name}&`;
   }
@@ -84,13 +86,14 @@ export async function searchRecipes(searchParams) {
   if (intolerance != 'No intolerances') {
     query += `intolerance=${intolerance}&`;
   }
-  query += `number=${number}`;
+  const parsedNumber = parseInt(number, 10);
+  query += `number=${parsedNumber}`;
 
   // Remove the trailing '&' if query is not empty
-  if (query.length > 0) {
+  if (query.endsWith('&')) {
     query = query.slice(0, -1);
   }
-
+  console.log(query)
   return await fetch(`${API_DOMAIN}/recipes/search?${query}`, {
     method: "GET",
     headers: {
